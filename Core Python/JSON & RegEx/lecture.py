@@ -111,22 +111,187 @@ json.dumps(x, indent=4, sort_keys=True)
 
 # Import the re module:
 
+# A Regular Expression (RegEx) is a sequence of characters that defines a search pattern. For example,
+
+# ^a...s$
+
+# The above code defines a RegEx pattern. The pattern is: any five letter string starting with a and ending with s.
+
 import re
 
-txt = "The rain in Spain"
-x = re.search("^The.*Spain$", txt)
+pattern = '^a...s$'
+test_string = 'ahars'
+result = re.match(pattern, test_string)
 
-if x:
-  print("YES! We have a match!")
+if result:
+  print("Search successful.")
 else:
-  print("No match")
+  print("Search unsuccessful.")
 
 
-# RegEx Functions
-# The re module offers a set of functions that allows us to search a string for a match:
+#   specify Pattern Using RegEx
+# To specify regular expressions, metacharacters are used. In the above example, ^ and $ are metacharacters.
 
-# Function  Description
-# findall => Returns a list containing all matches
-# search => Returns a Match object if there is a match anywhere in the string
-# split => Returns a list where the string has been split at each match
-# sub => Replaces one or many matches with a string
+# MetaCharacters
+# Metacharacters are characters that are interpreted in a special way by a RegEx engine. Here's a list of metacharacters:
+
+# [] . ^ $ * + ? {} () \ |
+
+# [] - Square brackets
+
+# Square brackets specifies a set of characters you wish to match.
+
+# [abc]
+# a 1 match
+# ac  2 matches
+# Hey Jude  No match
+# abc de ca 5 matches
+
+
+# Here, [abc] will match if the string you are trying to match contains any of the a, b or c.
+
+# You can also specify a range of characters using - inside square brackets.
+
+# [a-e] is the same as [abcde].
+# [1-4] is the same as [1234].
+# [0-39] is the same as [01239].
+# You can complement (invert) the character set by using caret ^ symbol at the start of a square-bracket.
+
+# [^abc] means any character except a or b or c.
+# [^0-9] means any non-digit character.
+
+
+
+#--------------------------------------------
+
+
+# Python RegEx
+# Python has a module named re to work with regular expressions. To use it, we need to import the module.
+
+# re.findall()
+# The re.findall() method returns a list of strings containing all matches.
+
+
+# Program to extract numbers from a string
+
+import re
+
+string = 'hello 12 hi 89. Howdy 34'
+pattern = '\d+'
+
+result = re.findall(pattern, string) 
+print(result)
+
+# Output: ['12', '89', '34']
+
+# If the pattern is not found, re.findall() returns an empty list.
+
+# re.split()
+# The re.split method splits the string where there is a match and returns a list of strings where the splits have occurred.
+
+# \d - Matches any decimal digit. Equivalent to [0-9]
+
+
+
+import re
+
+string = 'Twelve:12 Eighty nine:89.'
+pattern = '\d+'
+
+result = re.split(pattern, string) 
+print(result)
+
+# Output: ['Twelve:', ' Eighty nine:', '.']
+
+
+# You can pass maxsplit argument to the re.split() method. It's the maximum number of splits that will occur.
+
+
+
+import re
+
+string = 'Twelve:12 Eighty nine:89 Nine:9.'
+pattern = '\d+'
+
+# maxsplit = 1
+# split only at the first occurrence
+result = re.split(pattern, string, 1) 
+print(result)
+
+# Output: ['Twelve:', ' Eighty nine:89 Nine:9.']
+
+
+
+# re.sub()
+# The syntax of re.sub() is:
+
+# re.sub(pattern, replace, string)
+# The method returns a string where matched occurrences are replaced with the content of replace variable.
+
+
+# Program to remove all whitespaces
+import re
+
+# multiline string
+string = 'abc 12\
+de 23 \n f45 6'
+
+# matches all whitespace characters
+pattern = '\s+'
+
+# empty string
+replace = ''
+
+new_string = re.sub(pattern, replace, string) 
+print(new_string)
+
+# Output: abc12de23f456
+
+
+# You can pass count as a fourth parameter to the re.sub() method. If omited, it results to 0. This will replace all occurrences.
+
+# multiline string
+string = 'abc 12\
+de 23 \n f45 6'
+
+# matches all whitespace characters
+pattern = '\s+'
+replace = ''
+
+new_string = re.sub(r'\s+', replace, string, 1) 
+print(new_string)
+
+# Output:
+# abc12de 23
+# f45 6
+
+# re.subn()
+# The re.subn() is similar to re.sub() except it returns a tuple of 2 items containing the new string and the number of substitutions made.
+
+
+# Program to remove all whitespaces
+import re
+
+# multiline string
+string = 'abc 12\
+de 23 \n f45 6'
+
+# matches all whitespace characters
+pattern = '\s+'
+
+# empty string
+replace = ''
+
+new_string = re.subn(pattern, replace, string) 
+print(new_string)
+
+# Output: ('abc12de23f456', 4)
+
+
+# re.search()
+# The re.search() method takes two arguments: a pattern and a string. The method looks for the first location where the RegEx pattern produces a match with the string.
+
+# If the search is successful, re.search() returns a match object; if not, it returns None
+
+# match = re.search(pattern, str)
+

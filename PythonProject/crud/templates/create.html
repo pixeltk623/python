@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center text-primary">New User Registraion</h1>
+    <a href="/" class="btn btn-warning mb-3">Home</a>
+    {% if message %}
+    <div class="alert {{message.class}}">
+      {{message.message}}
+    </div>
+    {% endif %}
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="">Name</label>
+        <input type="text" name="name" id="" class="form-control">
+        {% if error %}
+        <span class="text-danger">{{error}}</span>
+        {% endif %}
+        <br>
+        <label>City</label>
+        <select name="city" class="form-control">
+          <option value="">Select</option>
+          <option value="Baroda">Baroda</option>
+          <option value="Anand">Anand</option>
+          <option value="Surat">Surat</option>
+        </select>
+        <br>
+        <label for="">File Upload</label>
+        <input type="file" name="fileUpload" id="" class="form-control-file">
+        <br>
+        <input type="submit" class="btn btn-primary mt-2" name="submit" value="submit">
+    </form>
+    
+  </div>
+ 
+</body>
+</html>

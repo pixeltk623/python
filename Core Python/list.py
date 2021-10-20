@@ -1,3 +1,14 @@
+{"target":"run_existing_window_command",
+"id":"repl_python_run",
+"file":"config/python/Main.sublime-menu"}
+
+a = int(input("Input an integer : "))
+n1 = int( "%s" % a )
+n2 = int( "%s%s" % (a,a) )
+n3 = int( "%s%s%s" % (a,a,a) )
+print (n1,n2,n3)
+
+
 # List
 # Lists are used to store multiple items in a single variable.
 # List Items

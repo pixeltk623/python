@@ -14,7 +14,6 @@ import time
 
 import math
 
-
 import speedtest
 
 # x = datetime.datetime.now()
@@ -208,7 +207,7 @@ import speedtest
 
 # print(x)
 
-st = speedtest.Speedtest()
+# st = speedtest.Speedtest()
 
 # option = int(input('''What speed do you want to test:
 
@@ -258,3 +257,31 @@ st = speedtest.Speedtest()
 # end = datetime.now()
 # time_taken = end - start
 # print('Time: ',time_taken) 
+
+# star1 = 'test'
+
+# star2 = 'eTtss asdas'
+
+# print(sorted(star2))
+
+
+# lower1 = star1.lower()
+# lower2 = star2.lower()
+
+# print(sorted(star1))
+# print(sorted(star2))
+
+# if sorted(star1)==sorted(star2):
+# 	print("Yes")
+# else:
+# 	print("No")
+
+def f(ham: str, eggs: str = 'eggs') -> str:
+     print("Annotations:", f.__annotations__)
+     print("Arguments:", ham, eggs)
+     return ham + ' and ' + eggs
+
+f('spam')
+# Annotations: {'ham': <class 'str'>, 'return': <class 'str'>, 'eggs': <class 'str'>}
+# Arguments: spam eggs
+# 'spam and eggs'

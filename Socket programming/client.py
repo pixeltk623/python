@@ -1,0 +1,20 @@
+import socket
+
+# c = socket.socket()
+
+# c.connect(('localhost',9999))
+
+# name = input("Enter Your Name")
+# c.send(bytes(name, 'utf-8'))
+
+# print(c.recv(1024).decode())
+
+c = socket.socket()
+
+c.connect(('localhost',3000))
+
+email = input("Enter Your Email: ")
+c.send(bytes(email, 'utf-8'))
+
+print(c.recv(1024).decode())
+
